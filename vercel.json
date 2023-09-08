@@ -9,12 +9,8 @@
   "routes": [
     {
       "src": "/api/blog(.*)",
-      "dest": "index.js" 
+      "dest": "server.js" 
     },
-    {
-      "src": "/(.*)", 
-      "dest": "client/index.html" 
-    }
   ]
 }
 
