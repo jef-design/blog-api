@@ -1,19 +1,6 @@
 const mongoose = require('mongoose')
 const {Blog} = require('../models/blogModel')
 
-const createBlog = async (req, res) => {
-    const {title, body} = req.body
-
-    try {
-        const blogs = await Blog.create({title,body})
-        res.status(200).json(blogs)
-    } catch (error) {
-        console.log(error)
-        res.status(400).json({message: error.message, wala: 'wla ka ininput e'})
-    }
-    // res.status(200).json(req.body)
-    
-}
 const getAllBlogs = async (req, res) => {
     const blogs = await Blog.find({}).sort({createdAt: -1})
     res.status(200).json(blogs)
@@ -30,6 +17,19 @@ const getBlog = async (req, res) => {
       return res.status(404).json({error: 'this is not available'})
     }
     res.status(200).json(blog)
+}
+const createBlog = async (req, res) => {
+    const {title, body} = req.body
+
+    try {
+        const blogs = await Blog.create({title,body})
+        res.status(200).json(blogs)
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({message: error.message, wala: 'wla ka ininput e'})
+    }
+    // res.status(200).json(req.body)
+    
 }
 const deleteBlog = async (req, res) => {
     const {id} = req.params
@@ -62,4 +62,4 @@ const updateBlog = async (req, res) => {
     res.status(200).json(blog)
 }
 
-module.exports = {createBlog, getAllBlogs, getBlog, deleteBlog,updateBlog}
+module.exports = {getAllBlogs, getBlog,createBlog, deleteBlog,updateBlog}
