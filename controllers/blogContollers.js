@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import { User, Blog } from '../models/blogModel.js'
+const mongoose = require('mongoose')
+const {Blog} = require('../models/blogModel')
 
 const createBlog = async (req, res) => {
     const {title, body} = req.body
@@ -15,13 +15,8 @@ const createBlog = async (req, res) => {
     
 }
 const getAllBlogs = async (req, res) => {
-    
-    try {
-        const blogs = await Blog.find({}).sort({createdAt: -1})
+    const blogs = await Blog.find({}).sort({createdAt: -1})
     res.status(200).json(blogs)
-    } catch (error) {
-        console.log(error)
-        res.status(400).json({message: error.message, wala: 'server error'})
 }
 
 const getBlog = async (req, res) => {
@@ -67,4 +62,4 @@ const updateBlog = async (req, res) => {
     res.status(200).json(blog)
 }
 
-export {createBlog, getAllBlogs, getBlog, deleteBlog,updateBlog}
+module.exports = {createBlog, getAllBlogs, getBlog, deleteBlog,updateBlog}
