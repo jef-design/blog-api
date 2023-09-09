@@ -1,9 +1,9 @@
-import express from "express";
-import dotenv from "dotenv";
+const express = require('express')
+const dotenv = require('dotenv')
 dotenv.config();
-import blogRoutes from "./routes/blogRoutes.js";
-import mongoose from "mongoose";
-import cors from "cors";
+const {blogRoutes} = require("./routes/blogRoutes.js");
+const mongoose = require('mongoose')
+const cors = require('cors')
 
 const app = express();
 //middleware
@@ -12,6 +12,7 @@ app.use(cors({
     methods: ['POST', 'GET'],
     credentials: true
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
@@ -34,4 +35,3 @@ mongoose
     .catch(error => {
         console.log(error);
     });
-export default app;
