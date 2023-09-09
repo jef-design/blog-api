@@ -21,7 +21,9 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/blog", blogRoutes);
-
+app.use("api/blog", (req,res) =>{
+    res.send("Api success")
+}
 const PORT = process.env.PORT || 5000;
 
 mongoose
