@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
 
@@ -19,28 +19,30 @@ const blogSchema = new Schema(
 );
 const Blog = mongoose.model("Blog", blogSchema);
 
-const userSchema = new Schema(
-    {
-        username: {
-            type: String,
-            required: true,
-            unique: true,
-        },
-        email: {
-            type: String,
-            required: true,
-            unique: true,
-        },
-        password: {
-            type: String,
-            required: true,
-        },
-    },
-    {
-        timestamps: true,
-    }
-);
+module.exports = Blog
+// const userSchema = new Schema(
+//     {
+//         username: {
+//             type: String,
+//             required: true,
+//             unique: true,
+//         },
+//         email: {
+//             type: String,
+//             required: true,
+//             unique: true,
+//         },
+//         password: {
+//             type: String,
+//             required: true,
+//         },
+//     },
+//     {
+//         timestamps: true,
+//     }
+// );
 
-const User = mongoose.model('User', userSchema)
+// const User = mongoose.model('User', userSchema)
 
-export {Blog,User};
+
+
