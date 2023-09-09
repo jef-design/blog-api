@@ -15,8 +15,13 @@ const createBlog = async (req, res) => {
     
 }
 const getAllBlogs = async (req, res) => {
-    const blogs = await Blog.find({}).sort({createdAt: -1})
+    
+    try {
+        const blogs = await Blog.find({}).sort({createdAt: -1})
     res.status(200).json(blogs)
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({message: error.message, wala: 'server error'})
 }
 
 const getBlog = async (req, res) => {
