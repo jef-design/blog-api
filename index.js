@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors({
     origin: ["https://mern-blog-frontend-theta.vercel.app"],
-    methods: ['POST', 'GET'],
+    methods: ['POST', 'GET', 'DELETE','PATCH'],
     credentials: true
 }));
 
