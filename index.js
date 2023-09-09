@@ -10,6 +10,11 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(cors({
+    origin: ["https://mern-blog-frontend-theta.vercel.app"],
+    methods: ['POST', 'GET'],
+    credentials: true
+}));
 
 app.use((req, res, next) => {
     console.log(req.path, req.method);
