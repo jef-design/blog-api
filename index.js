@@ -21,7 +21,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use("/", blogRoutes);
+app.use("/api/blog", blogRoutes);
 
 const PORT = process.env.PORT || 5000;
 
